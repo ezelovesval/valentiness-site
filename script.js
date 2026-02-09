@@ -13,16 +13,20 @@ function moveNoButton() {
     const area = buttonArea.getBoundingClientRect();
     const btn = noBtn.getBoundingClientRect();
 
-    const maxX = area.width - btn.width;
-    const maxY = area.height - btn.height;
+    const padding = 8;
 
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
+    const maxX = area.width - btn.width - padding;
+    const maxY = area.height - btn.height - padding;
+
+    const x = padding + Math.random() * maxX;
+    const y = padding + Math.random() * maxY;
 
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
+    noBtn.style.transform = "translate(0,0)";
 }
 
+// DESKTOP hover
 noBtn.addEventListener("mouseenter", () => {
     noCount++;
     moveNoButton();
@@ -33,6 +37,19 @@ noBtn.addEventListener("mouseenter", () => {
     subtext.innerText = "AINT NO WAY U TRYNA PRESS NO BUDDY 😈";
 });
 
+// MOBILE touch
+noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault(); // stop zoom/scroll
+    noCount++;
+    moveNoButton();
+
+    yesScale += 0.15;
+    yesBtn.style.transform = `scale(${yesScale})`;
+
+    subtext.innerText = "AINT NO WAY U TRYNA PRESS NO BUDDY 😈";
+}, { passive: false });
+
+// Mobile click fallback
 noBtn.addEventListener("click", (e) => {
     e.preventDefault();
     moveNoButton();
@@ -48,3 +65,4 @@ yesBtn.addEventListener("click", () => {
 resetBtn.addEventListener("click", () => {
     location.reload();
 });
+
