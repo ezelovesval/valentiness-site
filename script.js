@@ -30,7 +30,7 @@ noBtn.addEventListener("mouseenter", () => {
     yesScale += 0.15;
     yesBtn.style.transform = `scale(${yesScale})`;
 
-    subtext.innerText = "Cannot press NO one 😈";
+    subtext.innerText = "AINT NO WAY U TRYNA PRESS NO BUDDY 😈";
 });
 
 noBtn.addEventListener("click", (e) => {
@@ -39,8 +39,8 @@ noBtn.addEventListener("click", (e) => {
 });
 
 yesBtn.addEventListener("click", () => {
-    question.innerText = "Correct choice 😌💘";
-    subtext.innerText = "Ok you officially my valentine.";
+    question.innerText = "GOOD GIRLLLL 😌💘";
+    subtext.innerText = "Aight u officially mine.";
     buttonArea.classList.add("hidden");
     result.classList.remove("hidden");
 });
